@@ -1,0 +1,19 @@
+
+
+.jumbotron nav ul {
+    background-color:#c92ac4eb;
+    border-style:solid;
+    height: 1.0cm;
+    width: 13%; /* from above */
+    font-size: 22px;
+    color: black;    
+    float: left;
+    text-align: left;
+    
+}
+
+.active { background-color: pink; }
+
+
+    
+      

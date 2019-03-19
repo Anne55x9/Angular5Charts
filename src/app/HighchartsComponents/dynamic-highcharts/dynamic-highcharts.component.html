@@ -1,0 +1,118 @@
+<div class="page-header">
+    <div style="text-align:center">
+            <h1>
+            Add a point to chart using highcharts extension
+            </h1>
+     </div>
+ </div>
+    
+    <body>
+    
+    <div class="content">
+    
+          
+    <br>
+
+  
+        <button style="background-color:green" (click)="add()">Add point</button>
+      <button style="background-color:red" (click)="remove()"> Remove point </button>
+     
+     
+    
+      <div style="height: 400px;" [chart]="chart"></div> 
+   
+      <br>   
+       
+      <button [routerLink]="['/ClickHC']"> Go to Click Chart</button>
+       
+    </div>
+    
+    </body>
+
+
+    <div class="container">
+        <h2>
+            Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+            
+        <h3> app.module.ts </h3>
+        <p> 
+         <textarea disabled style="width: 30cm; height: 1cm">  
+                    
+                import { ChartModule } from 'angular-highcharts'; 
+
+                imports: [
+                ChartModule,
+
+
+         </textarea> 
+    </p>
+   
+    
+            <h3> component.ts </h3>
+    
+       <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+                
+                import { Chart } from 'angular-highcharts';
+                
+                export class DynamicHighchartsComponent {
+
+                    chart = new Chart({
+                      chart: {
+                        type: 'line'     
+                      },
+                  
+                      title: {
+                        text: 'Highcharts line chart to add and remove points'
+                      },
+                      xAxis: {
+                        title: {
+                            text: 'xAxisName'
+                        },
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'yAxisName'
+                          },
+                       
+                      },
+                      credits: {
+                        enabled: false
+                      },
+                      series: [
+                        {
+                          name: 'My line chart using method Math.random',
+                          data: [3, 7, 11, 15]
+                        }
+                      ]
+                    });
+                   
+                    // add point to chart serie
+                    add() {
+                      this.chart.addPoint(Math.floor(Math.random() * 10));
+                    }
+                  //remove the first point made in chart serie.
+                  
+                    remove(){
+                      this.chart.removePoint(Math.floor(Math.random()));
+                    }
+                  
+                  }
+                        
+        </textarea>          
+        </p> 
+        
+        <h3> html </h3> 
+    
+        <p>
+        <textarea disabled style="width: 30cm; height: 1cm">
+        
+                &lt;div style="height: 400px;" [chart]="chart"&gt;&lt;/div&gt; 
+
+    </textarea>
+</p>
+        
+    
+    
+    </div>

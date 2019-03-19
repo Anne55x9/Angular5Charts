@@ -1,0 +1,163 @@
+
+<div class="page-header">
+<div style="text-align:center">
+        <h1>
+        Ngx-charts Bar Chart
+        </h1>
+<div>
+</div>
+
+<body >
+
+<div class="content">
+  
+      
+<br>
+<div style="height: 400px; width: 1200px; background-color: white">
+        <ngx-charts-bar-horizontal-2d [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient"[legend]="showLegend" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel" >
+        </ngx-charts-bar-horizontal-2d>
+        </div>
+<br>   
+   
+<button [routerLink]="['/LineNgx']"> Go to a line chart</button>
+
+</div>
+
+</body>
+
+
+<div class="container">
+        <h2>
+                Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+
+        <h3> app.module.ts </h3>
+        <p> 
+         <textarea disabled style="width: 30cm; height: 1cm">  
+                import { NgxChartsModule } from "@swimlane/ngx-charts";
+
+                imports: [
+    NgxChartsModule,
+   
+                   
+                        
+         </textarea> 
+    </p>
+            
+        
+            <h3> component.ts </h3>
+    
+       <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+                
+             export class BarNgxchartComponent {
+
+  multi = [
+    {
+      name: '1',
+      series: [
+        {
+          name: 'year3',
+          value: 40632
+        },
+        {
+          name: 'year2',
+          value: 36953
+        },
+        {
+          name: 'year1',
+          value: 31476
+        }
+      ]
+    },
+    {
+      name: '2',
+      series: [
+        {
+          name: 'year3',
+          value: 49737
+        },
+        {
+          name: 'year2',
+          value: 45986
+        },
+        {
+          name: 'year1',
+          value: 37060
+        }
+      ]
+    },
+    {
+      name: '3',
+      series: [
+        {
+          name: 'year3',
+          value: 36745
+        },
+        {
+          name: 'year2',
+          value: 34774
+        },
+        {
+          name: 'year1',
+          value: 29476
+        }
+      ]
+    },
+    {
+      name: '4',
+      series: [
+        {
+          name: 'year3',
+          value: 36240
+        },
+        {
+          name: 'year2',
+          value: 32543
+        },
+        {
+          name: 'year1',
+          value: 26424
+        }
+      ]
+    }
+  ];
+ 
+  
+  view: any[] = [1200, 400];
+ 
+  showXAxis = true;
+  showYAxis = true;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = "XaxisName";
+  showYAxisLabel = true;
+  yAxisLabel = "YaxisName";
+
+  colorScheme = {
+    domain: ["#5AA454", "#A10A28", "#C7B42C", "#AAAAAA"]
+  };
+}                           
+        </textarea>          
+        </p> 
+        
+            <h3> html </h3> 
+    
+            <p>
+            <textarea disabled style="width: 30cm; height: 2cm">
+            
+                &lt;div style="height: 400px;width: 700px; background-color: white"&gt;
+                &lt;ngx-charts-bar-horizontal-2d [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient"[legend]="showLegend" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel" &gt;
+                &lt;/ngx-charts-bar-horizontal-2d&gt;
+         &lt;/div&gt;
+    
+        </textarea>
+    </p>
+    
+    
+    
+    </div>

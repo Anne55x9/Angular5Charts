@@ -1,0 +1,102 @@
+<div class="page-header">
+<div style="text-align:center">
+        <h1>
+        CanvasJS Bar Chart
+        </h1>
+<div>
+</div>
+
+<body >
+
+<div class="content">
+  
+<!-- <h2>type: bar</h2>   -->
+      
+<br>
+    <div id="chartContainer1" style="height: 270px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+<br>   
+   
+<button [routerLink]="['/LineCan']"> Go to a line chart</button>
+   
+</div>
+
+</body>
+
+
+
+<div class="container">
+    <h2>
+      Where & What code to add in an Angular 5 web application to make this chart example:
+    </h2>
+        
+    <h3> js service canvasjs.min </h3> 
+    <p> Please download the javascript service from 
+    <a target="_blank" rel="noopener" href="https://canvasjs.com/">canvasJs.com</a>
+    . The service provides the CanavasJS object to generate CanvasJS trial version charts.    
+</p>
+       
+
+        <h3> component.ts </h3>
+
+   <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+            
+                import * as CanvasJS from '../canvasjs.min';
+
+                export class BarCanchartComponent implements OnInit {
+
+                    ngOnInit() {
+                  
+                      var dataPoints = [
+                        { y: 100 },
+                        { y: 43 },
+                        { y: 77 },
+                        { y: 11 },
+                        { y: 50 },
+                        { y: 70 },
+                        { y: 23 },
+                        { y: 38 },
+                        { y: 25 },
+                      ];	
+                        var chart1 = new CanvasJS.Chart("chartContainer1",{
+                        animationEnabled: true,
+                        title:{
+                        text: "CanvasJS bar chart",
+                        },
+                        axisX: {
+                          title:"DummyXaxis"
+                        },
+                        axisY: {
+                          title:"DummyXaxis"
+                        },
+                        data: [{
+                        type: "bar",
+                        dataPoints : dataPoints
+                        }]
+                      });
+                        chart1.render();
+                    }
+                    
+                </textarea>          
+    </p> 
+    
+
+
+<h3> html </h3> 
+
+<p>
+<textarea disabled style="width: 30cm; height: 1cm">
+
+&lt;div id="chartContainer1" style="height: 270px; width: 100%; margin-left:auto;margin-right:auto;"&gt;&lt;/div&gt;
+
+
+</textarea>
+</p>
+
+
+</div>
+
+
+
+
+

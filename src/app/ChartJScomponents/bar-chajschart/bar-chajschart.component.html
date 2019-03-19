@@ -1,0 +1,168 @@
+<div class="page-header">
+    <div style="text-align:center">
+            <h1>
+                    Chartsjs Bar Chart
+            </h1>
+    <div>
+    </div>
+    
+    <body >
+    
+    <div class="content">
+             
+ 
+    <div style="width: 1200px; background-color: white">
+            <div *ngIf="chart">
+              <canvas id="canvas">{{ chart }}</canvas>
+            
+            </div>
+    </div>
+  
+       <br>
+    <button [routerLink]="['/LineCharts']"> Go to line chart</button>
+
+       
+    </div>
+    
+    </body>
+
+    <div class="container">
+        <h2>
+            Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+            
+        <h3> app.module.ts </h3>
+        <p> 
+         <textarea disabled style="width: 30cm; height: 2cm">         
+            import {HttpClientModule} from '@angular/common/http';
+            import {WeatherService} from './ChartJScomponents/weather.service'; 
+            
+            imports: [
+    HttpClientModule,
+
+    providers: [WeatherService],
+                        
+         </textarea> 
+    </p>
+        
+    <h3> weather.service.ts </h3>
+    
+    <p>
+     <textarea disabled style="width: 30cm; height: 5cm">  
+             
+        import { Injectable } from '@angular/core';
+
+        import {HttpClient} from '@angular/common/http';
+        
+        import 'rxjs/add/operator/map';
+        
+        @Injectable()
+        export class WeatherService {
+        
+          constructor(private _http: HttpClient) { }
+        
+          freeWeatherData(){
+            return this._http.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22")
+            .map(result => result);
+          }
+        }      
+                     
+     </textarea>          
+     </p>  
+    
+            <h3> component.ts </h3>
+    
+       <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+                
+            import {WeatherService} from '../weather.service';
+            import { Chart } from 'chart.js';  
+            
+            export class BarChajschartComponent implements OnInit {
+
+                chart = []
+                constructor(private _weather: WeatherService) { }
+              
+                ngOnInit() {
+                  this._weather.freeWeatherData()
+                  .subscribe(res => {
+              
+                    var temp_max = res['list'].map(res => res.main.temp_max);
+                    var temp_min = res['list'].map(res => res.main.temp_min);
+                    var alldates = res['list'].map(res => res.dt)
+              
+                    var weatherDates = []
+                    
+                    alldates.forEach((res) => {
+                      var jsdata = new Date(res * 1000);
+                      weatherDates.push(jsdata.toLocaleTimeString('en', {year: 'numeric', month: 'short', day:'numeric'}))
+                    });
+              
+                    this.chart = new Chart('canvas', {
+                      type: 'bar',
+                      data: {
+                        labels: weatherDates,
+                        datasets: [
+                          {
+                            data: temp_max,
+                            borderColor: "#3cba9f",
+                            fill: false
+                          },
+                          {
+                            data:temp_min,
+                            borderColor: "#ffcc00",
+                            fill:false
+                          },
+                        ]
+                      },
+                      options:{
+                        legend: {
+                          display:false
+                        },
+                        title:{
+                          display:true,
+                          text:'ChartJS Bar chart'
+                        },
+                        scales: {
+                          xAxes: [{
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'xAxisName'
+                            }
+                          }],
+                          yAxes: [{
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'yAxisName'
+                            }
+                          }]
+                        }
+                      }
+                    })
+              
+                  }) 
+                }
+              
+              }
+                        
+        </textarea>          
+        </p> 
+        
+
+        <h3> html </h3> 
+    
+        <p>
+        <textarea disabled style="width: 30cm; height: 2cm">
+
+                &lt;div style="height: 300px; width: 600px; background-color: white"&gt;
+            &lt;div *ngIf="chart"&gt;
+              &lt;canvas id="canvas"&gt;{{ chart }}&lt;/canvas&gt;
+            
+            &lt;/div&gt;
+    &lt;/div&gt;
+              
+
+    </textarea>
+</p>
+    
+    </div>

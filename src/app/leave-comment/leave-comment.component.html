@@ -1,0 +1,52 @@
+<div class="page-header">
+    <div style="text-align:center">
+            <h1>
+                Comment page
+            </h1>
+    <div>
+ </div>
+    
+<body>
+    
+  <div class="content">
+      
+        <h2>comments: </h2>
+          
+        <div class="comment" style="background-color: azure">
+            <ul *ngFor="let comment of comments">
+               <span> From {{comment.name}}: '{{comment.text}}'</span>  
+            </ul>
+        </div>
+
+    </div>
+
+    <div>
+        <input #name placeholder="Write your name"/>
+
+        <input maxlength="100" size="100" #text placeholder="Write your comment max 100 characters"/>
+            
+        <button (click)="addComment(name.value,text.value)"> Add comment</button>        
+    </div>     
+        
+
+        <div>
+         <br>
+        <br>
+        <button type = "text" onClick="this.disabled = true;" class = "btn btn-primary" (click)="onCount(); showThankYou()"> Click to add a like to this website! </button>
+            
+        <div style="background-color:greenyellow">
+        <p *ngIf="showCount"> {{ count }} like!</p> 
+        </div>
+             
+         <div>
+         <p *ngIf="showThanks">{{ thankYouNote }}</p>
+       </div>
+            
+      </div>
+       
+ 
+    
+</body>
+
+
+

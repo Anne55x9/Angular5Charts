@@ -1,0 +1,132 @@
+<div class="page-header">
+<div style="text-align:center">
+        <h1>
+        Fusioncharts Bar Chart
+        </h1>
+<div>
+</div>
+
+<body >
+
+<div class="content">
+   
+      
+<br>
+<fusioncharts [dataSource]="dataSource" [type]="type" [width]="width"></fusioncharts>
+<br>   
+   
+<button [routerLink]="['/LineFu']"> Go to a line chart</button>
+   
+</div>
+
+</body>
+
+
+<div class="container">
+        <h2>
+            Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+            
+        <h3> app.module.ts </h3>
+        <p> 
+        <textarea disabled style="width: 30cm; height: 2cm">   
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+FusionChartsModule.fcRoot(FusionCharts,Charts,FintTheme)
+
+imports: [ 
+FusionChartsModule,
+],          
+
+        </textarea>
+    </p>
+            
+    
+            <h3> component.ts </h3>
+    
+       <p>
+            <textarea disabled style="width: 30cm; height: 10cm">  
+                
+                export class BarFuchartComponent implements OnInit {
+
+                    width = 1200;
+                    height = 400;
+                    type = 'bar2d';
+                    dataFormat= 'json';
+                    dataSource;
+                  
+                    ngOnInit() {
+                      this.dataSource = {
+                        "chart": {  
+                          "caption": "Fusioncharts Bar Chart", 
+                          "xaxisname": "NameXaxis",
+                          "yaxisname": "NameYaxis",  
+                          "numbersuffix": "%",  
+                          "basefontsize": "12",  
+                          "basefontcolor": "#194920",  
+                          "valuefontcolor": "#194920",  
+                          "canvasBgColor": "#f3f5f6",  
+                          "canvasBgAlpha": "100",  
+                          "bgColor": "#f3f5f6",  
+                          "BgAlpha": "100",  
+                          "palettecolors": "#3A803D",    
+                          "theme": "zune"
+                        },
+                        "data": [  
+                          {  
+                              "label": "1",  
+                              "value": "7.3"  
+                          },  
+                          {  
+                              "label": "2",  
+                              "value": "4.5"  
+                          },  
+                          {  
+                              "label": "3",  
+                              "value": "9.5"  
+                          },  
+                          {  
+                              "label": "4",  
+                              "value": "1.2"  
+                          },  
+                          {  
+                              "label": "5",  
+                              "value": "4.1"  
+                          },  
+                          {  
+                              "label": "6",  
+                              "value": "6.4"  
+                          },  
+                          {  
+                              "label": "7",  
+                              "value": "3.2"  
+                          },  
+                          {  
+                              "label": "8",  
+                              "value": "5.0"  
+                          }  
+                      ]
+                      }
+                    }
+                  
+                  }     
+                        
+                </textarea>          
+        </p> 
+        
+     
+        <h3> html </h3> 
+    
+        <p>
+        <textarea disabled style="width: 30cm; height: 1cm">
+        
+       &lt;fusioncharts [dataSource]="dataSource" [type]="type" [width]="width"&gt;&lt;/fusioncharts&gt;
+
+    </textarea>
+</p>
+    
+    </div>
+    
+    

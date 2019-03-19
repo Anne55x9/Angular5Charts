@@ -1,0 +1,210 @@
+   <div class="page-header">
+    <div style="text-align:center">
+            <h1>
+                    Ngx-charts Line Chart
+            </h1>
+    <div>
+ </div>
+    
+    <body>
+    
+    <div class="content">
+    
+          
+    <br>
+
+  <div style="height: 400px; width: 1200px; background-color: white">
+<ngx-charts-line-chart 
+[view]="lineChartView"
+[scheme]="lineChartColorScheme" 
+[results]="lineChartMulti" 
+[gradient]="lineChartGradient" 
+[xAxis]="lineChartShowXAxis" 
+[yAxis]="lineChartShowYAxis" 
+[legend]="lineChartShowLegend" 
+[showXAxisLabel]="lineChartShowXAxisLabel" 
+[showYAxisLabel]="lineChartShowYAxisLabel" 
+[xAxisLabel]="lineChartXAxisLabel" 
+[yAxisLabel]="lineChartYAxisLabel" 
+[autoScale]="lineChartAutoScale" 
+[curve]="lineChartLineInterpolation" > 
+</ngx-charts-line-chart>
+</div>  
+   
+      <br>   
+       
+      <button [routerLink]="['/BarNgx']"> Go back to bar chart</button>
+    </div>
+    
+</body> 
+
+
+<div class="container">
+        <h2>
+            Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+            
+        <h3> app.module.ts </h3>
+        <p> 
+         <textarea disabled style="width: 30cm; height: 1cm">          
+        import { NgxChartsModule } from "@swimlane/ngx-charts"; 
+        
+        imports: [
+    NgxChartsModule,
+   
+                        
+         </textarea> 
+    </p>
+
+    <h3> ngx-charts.config.ts (d3-shape import) </h3>
+    
+        <p>
+         <textarea disabled style="width: 30cm; height: 5cm">  
+                 
+            import * as shape from 'd3-shape';
+
+            export var lineChartView: any[] = [1200, 400];  
+            export var lineChartShowXAxis = true;
+            export var lineChartShowYAxis = true;
+            export var lineChartShowLegend = true;
+            export var lineChartShowXAxisLabel = true;
+            export var lineChartXAxisLabel = 'XaxisName';
+            export var lineChartShowYAxisLabel = true;
+            export var lineChartYAxisLabel = 'YaxisName';    
+            
+            export var lineChartColorScheme = {
+                domain: ['#1CBCD8', '#FF8D60', '#FF586B', '#AAAAAA']
+            };
+            
+            export var lineChartAutoScale = true;
+            export var lineChartLineInterpolation = shape.curveBasis;  
+                         
+         </textarea>          
+         </p> 
+    
+    
+            <h3> component.ts </h3>
+            
+
+       <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+            import * as chartsData from './ngx-charts.config';
+         
+            export class LineNgxchartComponent implements OnInit {  
+                //In this example it is only possible to reach chartsData 
+                //by using config file with 3d shape import. 
+                
+                lineChartView: any[] = chartsData.lineChartView;
+              
+                lineChartShowXAxis = chartsData.lineChartShowXAxis;
+                lineChartShowYAxis = chartsData.lineChartShowYAxis;
+                lineChartShowLegend = chartsData.lineChartShowLegend;
+                lineChartShowXAxisLabel = chartsData.lineChartShowXAxisLabel;
+                lineChartXAxisLabel = chartsData.lineChartXAxisLabel;
+                lineChartShowYAxisLabel = chartsData.lineChartShowYAxisLabel;
+                lineChartYAxisLabel = chartsData.lineChartYAxisLabel;
+                lineChartColorScheme = chartsData.lineChartColorScheme;
+               
+                lineChartAutoScale = chartsData.lineChartAutoScale;
+                lineChartLineInterpolation = chartsData.lineChartLineInterpolation;
+                
+                  ngOnInit(){
+                   var lineChartMulti = [
+                    {
+                        "name": "1",
+                        "series": [
+                        {
+                            "name": "2000",
+                            "value": 90
+                        },
+                        {
+                            "name": "2001",
+                            "value": 300
+                        },
+                        {
+                            "name": "2002",
+                            "value": 390
+                        },
+                        {
+                            "name": "2003",
+                            "value": 500
+                        },
+                        {
+                            "name": "2004",
+                            "value": 720
+                        },
+                        {
+                            "name": "2005",
+                            "value": 740
+                        },
+                        {
+                            "name": "2006",
+                            "value": 799
+                        }
+                        ]
+                
+                    },
+                    {
+                      "name": "2",
+                      "series": [
+                      {
+                          "name": "2000",
+                          "value": 110
+                      },
+                      {
+                          "name": "2001",
+                          "value": 290
+                      },
+                      {
+                          "name": "2002",
+                          "value": 360
+                      },
+                      {
+                          "name": "2003",
+                          "value": 420
+                      },
+                      {
+                          "name": "2004",
+                          "value": 470
+                      },
+                      {
+                          "name": "2005",
+                          "value": 570
+                      },
+                      {
+                          "name": "2006",
+                          "value": 600
+                      }
+                      ]
+              
+                  },
+                ]
+                    Object.assign(this, { lineChartMulti })
+                }
+              }
+                   
+                        
+        </textarea>          
+        </p> 
+
+        
+
+    <h3> html </h3> 
+    
+    <p>
+    <textarea disabled style="width: 30cm; height: 2cm">
+    
+        &lt;div style="height: 400px; width: 1200px; background-color: white""&gt;
+        &lt;ngx-charts-line-chart [view]="lineChartView" [scheme]="lineChartColorScheme" 
+        [results]="lineChartMulti" [gradient]="lineChartGradient" [xAxis]="lineChartShowXAxis" 
+        [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend" 
+        [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel" 
+        [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="lineChartYAxisLabel" 
+        [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation" &gt; 
+        &lt;/ngx-charts-line-chart&gt;
+        &lt;/div&gt;
+
+</textarea>
+</p>
+    
+    </div>

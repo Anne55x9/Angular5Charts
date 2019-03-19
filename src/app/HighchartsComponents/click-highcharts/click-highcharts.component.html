@@ -1,0 +1,128 @@
+
+  <div class="page-header">
+      <div style="text-align:center">
+              <h1>
+              Click on line chart to add points using highcharts extension
+              </h1>
+       </div>
+   </div>
+      
+      <body>
+      
+      <div class="content">
+       
+        <div style="height: 400px;" [chart]="chart"></div> 
+     
+        <br>   
+         
+        <button [routerLink]="['/AddPointHC']"> Go to add/remove point button chart</button>
+         
+      </div>
+      
+      </body>
+
+
+      <div class="container">
+        <h2>
+            Where & What code to add in an Angular 5 web application to make this chart example:
+        </h2>
+            
+        <h3> app.module.ts </h3>
+        <p> 
+         <textarea disabled style="width: 30cm; height: 1cm">  
+                
+                import { ChartModule } from 'angular-highcharts'; 
+                
+                imports: [
+                ChartModule,
+
+                        
+         </textarea> 
+    </p>
+          
+    
+            <h3> component.ts </h3>
+    
+       <p>
+        <textarea disabled style="width: 30cm; height: 10cm">  
+              
+                import { Chart } from 'angular-highcharts';
+
+                export class ClickHighchartsComponent {
+
+
+                    chart = new Chart({
+                     chart: {
+                         type: 'line',
+                         margin: [70, 50, 60, 80],
+                         events: {
+                             click: function (e) {
+                               
+                                 var x = Math.round(e.xAxis[0].value),
+                                     y = Math.round(e.yAxis[0].value),
+                                     series = this.series[0];
+               
+                                 series.addPoint([x, y]);
+                 
+                             }
+                         }
+                         
+                     },
+                     title: {
+                         text: 'Highcharts line chart with click feature'
+                     },
+                     subtitle: {
+                         text: 'Click the plot area to add a point.'
+                     },
+                     xAxis: {
+                       title: {
+                           text: 'xAxisName'
+                       },
+                         gridLineWidth: 1,
+                         minPadding: 0.2,
+                         maxPadding: 0.2,
+                         maxZoom: 60
+                     },
+                     yAxis: {
+                         title: {
+                             text: 'yAxisName'
+                         },
+                         minPadding: 0.2,
+                         maxPadding: 0.2,
+                         maxZoom: 60,
+                         plotLines: [{
+                             value: 0,
+                             width: 1,
+                             color: '#808080'
+                         }]
+                     },
+                     legend: {
+                         enabled: false
+                     },
+                     exporting: {
+                         enabled: false
+                     },
+                     series: [{
+                         data: [[20, 20], [80, 80]]
+                     }]
+               });
+               
+               }
+                   
+                        
+        </textarea>          
+        </p> 
+        
+
+    <h3> html </h3> 
+    
+    <p>
+    <textarea disabled style="width: 30cm; height: 1cm">
+    
+            &lt;div style="height: 400px;" [chart]="chart"&gt;&lt;/div&gt; 
+
+</textarea>
+</p>
+    
+    
+    </div>
